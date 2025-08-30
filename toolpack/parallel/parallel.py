@@ -1,11 +1,13 @@
 from warnings import warn
-from typing import List, Callable, Any
+from typing import List, Callable, Any, Generator, Union, Tuple
+from typing_extensions import TypeAlias
 from joblib import Parallel, delayed
 from tqdm import tqdm
 
+ARGSET_TYPE: TypeAlias = Union[List[Any], Generator[Any, None, None], Tuple[Any, ...]]
 
 def parallel_luncher(
-    job: Callable, argset: List[Any], pnum: int, unpack=False, use_tq=True, **kwargs
+    job: Callable, argset: ARGSET_TYPE, pnum: int, unpack=False, use_tq=True, **kwargs
 ) -> list:
     """Parallel's delayed method luncher."""
 
