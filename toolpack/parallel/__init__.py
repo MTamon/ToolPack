@@ -1,1 +1,1 @@
-from .parallel import parallel_luncher
+from .parallel import parallel_launcher, parallel_luncher

@@ -9,3 +9,6 @@
 ## [0.0.4] - 2023-12-01
 ### Fix
 - Fix module import bugs
+## [0.0.6] - 2026-06-12
+### Add
+- `parallel_launcher`: correctly spelled public API name. `parallel_luncher` is kept as a deprecated alias (emits `DeprecationWarning`).

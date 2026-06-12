@@ -6,10 +6,10 @@ from tqdm import tqdm
 
 ARGSET_TYPE: TypeAlias = Union[List[Any], Generator[Any, None, None], Tuple[Any, ...]]
 
-def parallel_luncher(
+def parallel_launcher(
     job: Callable, argset: ARGSET_TYPE, pnum: int, unpack=False, use_tq=True, **kwargs
 ) -> list:
-    """Parallel's delayed method luncher."""
+    """Parallel's delayed method launcher."""
 
     def job_wrraper(job: Callable, unpack: bool = False) -> Callable:
         """Wrapper for job that have dict type args."""
@@ -29,3 +29,15 @@ def parallel_luncher(
         delayed(job_wrraper(job, unpack))(arg) for arg in iterator
     )
     return list(result)
+
+
+def parallel_luncher(
+    job: Callable, argset: ARGSET_TYPE, pnum: int, unpack=False, use_tq=True, **kwargs
+) -> list:
+    """Deprecated alias of :func:`parallel_launcher` (kept for backward compatibility)."""
+    warn(
+        "parallel_luncher is deprecated; use parallel_launcher instead.",
+        DeprecationWarning,
+        stacklevel=2,
+    )
+    return parallel_launcher(job, argset, pnum, unpack=unpack, use_tq=use_tq, **kwargs)
