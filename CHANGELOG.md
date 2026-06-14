@@ -12,3 +12,7 @@
 ## [0.0.6] - 2026-06-12
 ### Add
 - `parallel_launcher`: correctly spelled public API name. `parallel_luncher` is kept as a deprecated alias (emits `DeprecationWarning`).
+
+## [0.0.7] - 2026-06-14
+### Fix
+- Declare the `typing_extensions` runtime dependency (used by `parallel.py`). It was missing from requirements, so a clean install failed to `import toolpack`.
