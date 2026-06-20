@@ -16,3 +16,7 @@
 ## [0.0.7] - 2026-06-14
 ### Fix
 - Declare the `typing_extensions` runtime dependency (used by `parallel.py`). It was missing from requirements, so a clean install failed to `import toolpack`.
+
+## [0.0.8] - 2026-06-20
+### Fix
+- Relax pinned runtime dependencies (`joblib`, `tqdm`) from exact `==` to `>=` lower bounds. The exact `tqdm==4.64.1` pin forced a downgrade of a newer compatible tqdm (e.g. 4.66.3) on `pip install -U`; lower bounds avoid disturbing an existing environment while still declaring the minimum supported versions.
